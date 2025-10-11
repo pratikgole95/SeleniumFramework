@@ -26,7 +26,7 @@ public class DriverManager {
                 ChromeOptions chromeOptions = new ChromeOptions();
 
                 //Headless configuration in CI/CD
-               if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
+               if (Boolean.parseBoolean(System.getProperty("headless", "true"))) {
                    chromeOptions.addArguments("--headless");
                }
 
