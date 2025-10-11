@@ -13,16 +13,12 @@ public class HomeSteps {
 
     @Then("Title of page {string}")
     public void titleOfPage(String expectedTitle) {
-        driver = DriverManager.getDriver();
-        homePage = new HomePage(driver);
         String actualTitle = homePage.verifyTitleOfPage();
         Assert.assertTrue(actualTitle.contains(expectedTitle), "Title mismatch: expected '" + expectedTitle + "' but got '" + actualTitle + "'");
     }
 
     @Then("scroll down the home page")
     public void scrollDownTheHomePage() {
-        driver = DriverManager.getDriver();
-        homePage = new HomePage(driver);
         homePage.scrollDownAndValidateText();
 
     }

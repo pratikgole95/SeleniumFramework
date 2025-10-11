@@ -11,14 +11,13 @@ import java.time.Duration;
 
 public class LoginSteps {
 
-    private static final Logger log = LoggerFactory.getLogger(LoginSteps.class);
-    private WebDriver driver;
-        private LoginPage loginPage;
+    private WebDriver driver = DriverManager.getDriver(); // always get the driver from DriverManager
+    private LoginPage loginPage = new LoginPage(driver);  // initialize page object once
 
+    private static final Logger log = LoggerFactory.getLogger(LoginSteps.class);
 
     @Given("user is on login page")
     public void user_is_on_login_page() {
-        driver = DriverManager.getDriver();
         driver.get("https://ui.freecrm.com/");
         loginPage = new LoginPage(driver);
     }

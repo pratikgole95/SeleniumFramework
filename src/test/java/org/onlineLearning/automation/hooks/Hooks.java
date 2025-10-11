@@ -20,9 +20,9 @@ public class Hooks {
         System.out.println("✅ Browser launched successfully.");
     }
 
-//    @After
-//    public void teardown()
-//    {
-//        DriverManager.quitDriver();
-//    }
+    @After
+    public void teardown()
+    {
+        DriverManager.quitDriver();
+    }
 }
