@@ -18,20 +18,25 @@ public class LoginSteps {
 
     @Given("user is on login page")
     public void user_is_on_login_page() {
-        driver = DriverManager.getDriver(); // get the driver after Hooks runs
-        loginPage = new LoginPage(driver); // initialize page object with non-null driver
+        driver = DriverManager.getDriver();  // ✅ Now the driver is initialized by Hooks
+        if (driver == null) {
+            throw new RuntimeException("❌ WebDriver is null — Hooks did not initialize correctly!");
+        }
         driver.get("https://ui.freecrm.com/");
-
+        loginPage = new LoginPage(driver);
+        log.info("✅ Navigated to login page");
     }
     @When("user enters valid credentials")
     public void user_enters_valid_credentials() {
         loginPage.login("prattygole07@gmail.com", "Test@1234");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        log.info("✅ Entered login credentials");
     }
 
     @Then("user should be redirected to home page")
     public void userShouldBeRedirectedToHomePage() {
         loginPage.homepage();
+        log.info("✅ Redirected to home page");
     }
 //    @Then("user should be redirected to home page")
 //    public void user_should_be_redirected_to_home_page() {
