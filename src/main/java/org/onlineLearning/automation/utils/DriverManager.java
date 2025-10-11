@@ -25,10 +25,10 @@ public class DriverManager {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
 
-//                Headless configuration in CI/CD
-                if (Boolean.parseBoolean(System.getProperty("headless", "true"))) {
-                    chromeOptions.addArguments("--headless");
-                }
+                //Headless configuration in CI/CD
+               if (Boolean.parseBoolean(System.getProperty("headless", "true"))) {
+                   chromeOptions.addArguments("--headless");
+               }
 
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -49,10 +49,10 @@ public class DriverManager {
         return driver.get();
     }
 
-    public static void quitDriver() {
-        if (driver.get() != null) {
-            driver.get().quit();
-            driver.remove();
-        }
-    }
+   public static void quitDriver() {
+       if (driver.get() != null) {
+           driver.get().quit();
+           driver.remove();
+       }
+   }
 }
