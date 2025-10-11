@@ -5,9 +5,9 @@ Feature: Validate Home page
     Given user is on login page
     When user enters valid credentials
 
-#  Scenario: Validate Title of page
-#    Then Title of page "Cogmento CRM"
+  Scenario: Validate Title of page
+    Then Title of page "Cogmento CRM"
 
 
-  Scenario: Scroll down to the page and verify text
-    Then scroll down the home page
+#  Scenario: Scroll down to the page and verify text
+#    Then scroll down the home page
