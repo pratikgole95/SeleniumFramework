@@ -26,9 +26,9 @@ public class DriverManager {
                 ChromeOptions chromeOptions = new ChromeOptions();
 
                 //Headless configuration in CI/CD
-//                if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
-//                    chromeOptions.addArguments("--headless");
-//                }
+               if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
+                   chromeOptions.addArguments("--headless");
+               }
 
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
