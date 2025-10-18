@@ -11,18 +11,28 @@ public class Hooks {
     private WebDriver driver;
 
     @Before
-    public void Setup() {
+    public void setup() {
+        System.out.println("🔹 Starting setup...");
         ConfigReader.loadConfig();
-        DriverManager.setDriver(ConfigReader.getProperty("browser"));
+
+        // ✅ Initialize WebDriver before any test
+        String browser = ConfigReader.getProperty("browser");
+        DriverManager.setDriver(browser);
+
         driver = DriverManager.getDriver();
+        if (driver == null) {
+            throw new RuntimeException("❌ WebDriver initialization failed! Driver is null.");
+        }
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
-        System.out.println("✅ Browser launched successfully.");
+
+        System.out.println("✅ Browser launched successfully: " + browser);
     }
 
-    @After
-    public void teardown()
-    {
-        DriverManager.quitDriver();
-    }
+//    @After
+//    public void teardown()
+//    {
+//        DriverManager.quitDriver();
+//    }
 }

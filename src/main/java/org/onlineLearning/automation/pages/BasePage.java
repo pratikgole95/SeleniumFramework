@@ -35,9 +35,16 @@ public class BasePage {
         );
     }
 
+    // For By locators
     protected void clickElement(By locator)
     {
         WebElement element=wait.until(ExpectedConditions.elementToBeClickable(locator));
+        element.click();
+    }
+
+    // For @FindBy WebElements
+    protected void clickElement(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 

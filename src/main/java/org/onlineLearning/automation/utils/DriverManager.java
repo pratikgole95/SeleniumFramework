@@ -15,6 +15,7 @@ public class DriverManager {
         //private constructor to avoid instantiation
     }
 
+    // ✅ Initialize browser instance
     public static void setDriver(String browserName) {
         if (browserName == null) {
             browserName = "chrome";
@@ -26,9 +27,9 @@ public class DriverManager {
                 ChromeOptions chromeOptions = new ChromeOptions();
 
                 //Headless configuration in CI/CD
-               if (Boolean.parseBoolean(System.getProperty("headless", "true"))) {
-                   chromeOptions.addArguments("--headless");
-               }
+//               if (Boolean.parseBoolean(System.getProperty("headless", "true"))) {
+//                   chromeOptions.addArguments("--headless");
+//               }
 
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -44,15 +45,15 @@ public class DriverManager {
         }
     }
 
-
+//    Getter
     public static WebDriver getDriver() {
         return driver.get();
     }
 
-   public static void quitDriver() {
-       if (driver.get() != null) {
-           driver.get().quit();
-           driver.remove();
-       }
-   }
+//   public static void quitDriver() {
+//       if (driver.get() != null) {
+//           driver.get().quit();
+//           driver.remove();
+//       }
+//   }
 }
